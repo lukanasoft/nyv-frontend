@@ -6,13 +6,16 @@
       <router-view />
     </transition>
     <brand-carousel />
+    <main-footer />
   </div>
 </template>
 <script>
 import NavBar from "@/components/navbar/NavBar";
 import BrandCarousel from "@/components/footer/BrandCarousel";
+import MainFooter from "@/components/footer/MainFooter";
 export default {
   components: {
+    MainFooter,
     BrandCarousel,
     NavBar,
   },

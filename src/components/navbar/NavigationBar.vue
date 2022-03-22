@@ -7,7 +7,9 @@
     </template>
     <template #end>
       <b-navbar-item href="#"> Inicio </b-navbar-item>
-      <b-navbar-item href="#"> Nosotros </b-navbar-item>
+      <b-navbar-item tag="router-link" :to="{ name: 'us' }">
+        Nosotros
+      </b-navbar-item>
       <b-navbar-item tag="router-link" :to="{ name: 'products' }">
         Productos
       </b-navbar-item>

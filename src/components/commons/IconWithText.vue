@@ -1,5 +1,5 @@
 <template>
-  <div class="is-flex is-align-items-center is-justify-content-center">
+  <div class="is-flex is-align-items-center is-justify-content-start">
     <feather-icon :icon="icon" class="mr-2" :size="iconSize" />
     <span
       class="font-size-14 is-flex is-align-items-center is-justify-content-center"
