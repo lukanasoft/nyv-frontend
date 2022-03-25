@@ -1,20 +1,20 @@
 <template>
   <div class="fixed-top">
-    <b-navbar class="container" transparent centered>
+    <b-navbar :style="transparent ? 'background: transparent' : ''" class="container" transparent centered>
       <template #brand>
         <b-navbar-item tag="router-link" :to="{ path: '/' }">
           <img :src="require('@/assets/logo.png')" alt="N&V logo" />
         </b-navbar-item>
       </template>
       <template #end>
-        <b-navbar-item href="#"> Inicio </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ name: 'us' }">
+        <b-navbar-item tag="router-link" :to="{ name: 'home' }"> Inicio </b-navbar-item>
+        <b-navbar-item :style="transparent ? 'color: white' : ''" tag="router-link" :to="{ name: 'us' }">
           Nosotros
         </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ name: 'products' }">
+        <b-navbar-item :style="transparent ? 'color: white' : ''" tag="router-link" :to="{ name: 'products' }">
           Productos
         </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ name: 'contact' }">
+        <b-navbar-item :style="transparent ? 'color: white' : ''" tag="router-link" :to="{ name: 'contact' }">
           Contactanos
         </b-navbar-item>
         <b-navbar-item>
@@ -35,6 +35,12 @@
 <script>
 export default {
   name: "NavigationBar",
+  props: {
+    transparent: {
+      type: Boolean,
+      default: false
+    }
+  }
 };
 </script>
 
@@ -42,7 +48,7 @@ export default {
 .navbar-item img {
   max-height: 100% !important;
 }
-.router-link-active {
+.router-link-exact-active {
   color: #0a90ca;
   font-weight: bold;
 }

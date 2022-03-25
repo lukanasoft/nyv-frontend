@@ -1,23 +1,24 @@
 <template>
   <div id="app">
-    <nav-bar />
-
-    <transition name="fade">
-      <router-view />
-    </transition>
-    <brand-carousel />
-    <main-footer />
+    <component :is="layout"/>
   </div>
 </template>
 <script>
-import NavBar from "@/components/navbar/NavBar";
-import BrandCarousel from "@/components/footer/BrandCarousel";
-import MainFooter from "@/components/footer/MainFooter";
+import PrincipalLayout from "@/domain/layouts/PrincipalLayout";
+import HomeLayout from "@/domain/layouts/HomeLayout";
+import {mapState} from 'vuex';
 export default {
   components: {
-    MainFooter,
-    BrandCarousel,
-    NavBar,
+    PrincipalLayout,
+    HomeLayout
+  },  
+  computed: {
+    ...mapState({
+      layout: state => state.LayoutsStore.layout,
+    }),
+  },
+  created() {
+    this.$store.commit("LayoutsStore/SET_LAYOUT", "HomeLayout");
   },
 };
 </script>

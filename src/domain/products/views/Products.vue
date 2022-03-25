@@ -14,6 +14,9 @@ export default {
     FilterCategory,
     ProductsGrid,
   },
+  created() {
+    this.$store.commit("LayoutsStore/SET_LAYOUT", "PrincipalLayout");
+  },
 };
 </script>
 

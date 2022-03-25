@@ -64,6 +64,9 @@ export default {
       self.$refs.carousel.next();
     }, 6000);
   },
+  beforeDestroy() {
+    clearInterval(this.intervalCarousel);
+  },
 };
 </script>
 

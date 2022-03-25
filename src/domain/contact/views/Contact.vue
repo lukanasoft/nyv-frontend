@@ -15,6 +15,9 @@ import ContactInfo from "@/domain/contact/components/ContactInfo";
 export default {
   name: "ContactView",
   components: { ContactInfo, MapLocation },
+  created() {
+    this.$store.commit("LayoutsStore/SET_LAYOUT", "PrincipalLayout");
+  },
 };
 </script>
 

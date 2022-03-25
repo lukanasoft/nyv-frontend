@@ -3,9 +3,10 @@ import VueRouter from "vue-router";
 import ContactRoute from "@/domain/contact/router";
 import ProductsRoute from "@/domain/products/router";
 import UsRoute from "@/domain/us/router";
+import HomeRoute from "@/domain/home/router";
 Vue.use(VueRouter);
 
-const routes = [ContactRoute, ProductsRoute, UsRoute];
+const routes = [ContactRoute, ProductsRoute, UsRoute, HomeRoute];
 
 const router = new VueRouter({
   mode: "history",
