@@ -1,4 +1,4 @@
-<template>
+  <template>
   <section class="my-6">
     <div
       class="container is-flex is-align-items-center is-justify-content-space-evenly container-contact"
@@ -15,8 +15,16 @@ import ContactInfo from "@/domain/contact/components/ContactInfo";
 export default {
   name: "ContactView",
   components: { ContactInfo, MapLocation },
+  props : {
+    needLayout: {
+      type: Boolean,
+      default: true
+    }
+  },
   created() {
-    this.$store.commit("LayoutsStore/SET_LAYOUT", "PrincipalLayout");
+    if(this.needLayout) {
+      this.$store.commit("LayoutsStore/SET_LAYOUT", "PrincipalLayout");
+    }
   },
 };
 </script>

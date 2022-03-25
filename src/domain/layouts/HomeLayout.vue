@@ -23,7 +23,7 @@
       <router-view />
     </transition>
     <brand-carousel />
-    <contact-view />
+    <contact-view :needLayout="false" />
     <main-footer />
   </div>
 </template>
