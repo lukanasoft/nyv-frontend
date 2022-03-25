@@ -15,22 +15,22 @@
       <div style="width: 100%" class="mt-4 box-icons">
         <box-icon
           class="box-icon"
-          :svg-data="require('@/assets/images/icons/atention.svg')"
+          :svg-data="require('@/assets/svg/icons/atention.svg')"
           text="ATENCIÓN PERSONALIZADA"
         />
         <box-icon
           class="box-icon"
-          :svg-data="require('@/assets/images/icons/bus.svg')"
+          :svg-data="require('@/assets/svg/icons/bus.svg')"
           text="ENVIO NACIONAL"
         />
         <box-icon
           class="box-icon"
-          :svg-data="require('@/assets/images/icons/accesorios.svg')"
+          :svg-data="require('@/assets/svg/icons/accesorios.svg')"
           text="ACCESORIOS DE CALIDAD"
         />
         <box-icon
           class="box-icon"
-          :svg-data="require('@/assets/images/icons/dashboard.svg')"
+          :svg-data="require('@/assets/svg/icons/dashboard.svg')"
           text="EXPERIENCIAS EN EL SECTOR"
         />
       </div>

@@ -5,10 +5,10 @@
     >
       <div class="is-grid px-6">
         <div
-          class="is-flex is-align-items-start is-justify-content-start is-flex-direction-column"
+          class="is-flex is-align-items-center is-justify-content-start is-flex-direction-column"
         >
           <div
-            class="column is-flex is-align-items-center is-justify-content-start"
+            class="column is-flex is-align-items-center is-justify-content-center"
           >
             <img
               :src="require('@/assets/logo.png')"
@@ -17,7 +17,7 @@
             />
             <h3 class="logo">MULTIMARCAS</h3>
           </div>
-          <p class="has-text-left">
+          <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quam urna
             odio ut id vulputate libero faucibus. Sed at ultrices non volutpat
             sed.
@@ -40,11 +40,15 @@
           <div class="contact-footer">
             <div class="mb-2">
               <h5 class="subtitle">Horario de atención</h5>
-              <p class="has-text-left ml-1">Lunes a viernes: 8:00am a 6:00pm</p>
-              <p class="has-text-left ml-1">Sábados: 8:00am a 5:00pm</p>
+              <p class="has-text-left ml-1 text-hour">
+                Lunes a viernes: 8:00am a 6:00pm
+              </p>
+              <p class="has-text-left ml-1 text-hour">
+                Sábados: 8:00am a 5:00pm
+              </p>
             </div>
-            <div>
-              <h4 class="subtitle">Contacto</h4>
+            <div class="contact-section">
+              <h5 class="subtitle">Contacto</h5>
               <icon-with-text
                 class="has-text-white ml-1"
                 icon="SmartphoneIcon"
@@ -131,8 +135,18 @@ export default {
   margin-right: 8px;
 }
 @media (max-width: 600px) {
-  .brand {
+  .contact-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .brand,
+  .contact-section {
     flex-direction: column;
+  }
+  .subtitle,
+  .text-hour {
+    text-align: center !important;
   }
   .payments {
     margin-top: 20px;

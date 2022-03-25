@@ -20,8 +20,8 @@ export default {
 }
 @media (max-width: 1024px) {
   .map-class {
-    width: 450px !important;
-    height: 350px !important;
+    width: 350px !important;
+    height: 250px !important;
   }
 }
 @media (max-width: 426px) {

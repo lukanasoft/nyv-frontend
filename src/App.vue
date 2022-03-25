@@ -51,4 +51,19 @@ nav {
 .fade-leave-to {
   opacity: 0;
 }
+.button-blue {
+  background: linear-gradient(180deg, #0991CC 0%, #013E59 100%);
+  color: white !important;
+}
+.button-red {
+  background: linear-gradient(180deg, #BA0107 0%, #4D0103 100%);
+  color: white !important; 
+}
+.button-blue:hover, .button-red:hover, .button-blue:focus, .button-red:focus {
+  color: white !important;
+}
+.w-50 {
+  width: 50%;
+  height: 100%;
+}
 </style>
