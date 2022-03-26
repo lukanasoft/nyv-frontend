@@ -91,7 +91,6 @@ export default {
     this.windowWidth = window.innerWidth
     window.addEventListener('resize', () => {
       this.windowWidth = window.innerWidth
-      console.log(this.isMobile)
     })
     await this.$store.dispatch('Categories/getCategories');
   },

@@ -8,7 +8,7 @@
       <navigation-bar class="z-index-99" transparent />
       <div class="hero-body z-index-99">
         <div class="container is-flex is-align-items-start is-justify-content-center mb-6">
-          <p class="title has-text-white" style="max-width: 790px; font-size: 72px">
+          <p class="title has-text-white is-font-72" style="max-width: 790px">
             Lorem ipsum dolor sit amet, consectetur.
           </p>
         </div>
@@ -48,6 +48,9 @@ export default {
 };
 </script>
 <style scoped>
+.is-font-72 {
+  font-size: 72px;
+}
 .z-index-99 {
   z-index: 99;
 }
@@ -71,5 +74,13 @@ header:before {
 .position-absolute {
   position: absolute;
   bottom: -80px;
+}
+@media(max-width: 900px) {
+  .is-font-72 {
+    font-size: 50px;
+  }
+  .hero-foot {
+    display: none;
+  }
 }
 </style>

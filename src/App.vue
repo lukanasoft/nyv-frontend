@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <component :is="layout"/>
+    <transition name="fade" mode="out-in">
+      <component :is="layout"/>
+    </transition>
   </div>
 </template>
 <script>
@@ -45,7 +47,7 @@ nav {
 }
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s ease;
+  transition: opacity 1s ease;
 }
 
 .fade-enter-from,
