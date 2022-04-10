@@ -1,6 +1,7 @@
 import axios from "axios";
 class BaseService {
     constructor() {
+        //env base url
         this.baseUrl = process.env.VUE_APP_BACKEND_URL
     }
     get(url) {
