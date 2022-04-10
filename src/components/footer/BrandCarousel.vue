@@ -6,11 +6,12 @@
         v-bind="carouselBrandConfiguration"
         :data="brands"
       >
-        <template #item>
+        <template #item="{name, image}">
           <section>
             <img
-              src="https://dancolmex.com.pe/wp-content/uploads/2021/03/bmp-proar-300x300.png"
+              :src="image"
               style="max-height: 200px !important"
+              :alt="name"
             />
           </section>
         </template>
@@ -20,24 +21,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: "BrandCarousel",
   data() {
     return {
-      brands: [
-        { a: 1 },
-        { a: 1 },
-        { a: 1 },
-        { a: 1 },
-        { a: 1 },
-        { a: 1 },
-        { a: 1 },
-        { a: 1 },
-        { a: 1 },
-        { a: 1 },
-        { a: 1 },
-        { a: 1 },
-      ],
       intervalCarousel: null,
       carouselBrandConfiguration: {
         itemsToShow: 2,
@@ -58,11 +47,19 @@ export default {
       },
     };
   },
-  created() {
+  computed: {
+    ...mapState({
+      brands: state => state.BrandStore.brands,
+    }),
+  },
+  
+  async created() {
     const self = this;
     this.intervalCarousel = setInterval(() => {
       self.$refs.carousel.next();
     }, 6000);
+    // get data
+    await this.$store.dispatch("BrandStore/getAll");
   },
   beforeDestroy() {
     clearInterval(this.intervalCarousel);

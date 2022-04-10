@@ -8,11 +8,16 @@
 <script>
 import PrincipalLayout from "@/domain/layouts/PrincipalLayout";
 import HomeLayout from "@/domain/layouts/HomeLayout";
+import LoginLayout from "@/domain/layouts/LoginLayout";
+import PanelLayout from "@/domain/layouts/PanelLayout";
+
 import {mapState} from 'vuex';
 export default {
   components: {
     PrincipalLayout,
-    HomeLayout
+    HomeLayout,
+    LoginLayout,
+    PanelLayout
   },  
   computed: {
     ...mapState({
@@ -21,6 +26,15 @@ export default {
   },
   created() {
     this.$store.commit("LayoutsStore/SET_LAYOUT", "HomeLayout");
+
+    //get user and token from localStorage
+    let user = localStorage.getItem("user");
+    user = user ? JSON.parse(user) : null;
+    let token = localStorage.getItem("token");
+    
+    // set to store
+    this.$store.commit("AuthStore/SET_USER", user);
+    this.$store.commit("AuthStore/SET_TOKEN", token);
   },
 };
 </script>
@@ -54,6 +68,11 @@ nav {
 .fade-leave-to {
   opacity: 0;
 }
+.button-blue-dashboard {
+  background-color: #0992CD !important;
+  color: white !important;
+  border-radius: 10px !important;
+}
 .button-blue {
   background: linear-gradient(180deg, #0991CC 0%, #013E59 100%);
   color: white !important;
@@ -62,7 +81,7 @@ nav {
   background: linear-gradient(180deg, #BA0107 0%, #4D0103 100%);
   color: white !important; 
 }
-.button-blue:hover, .button-red:hover, .button-blue:focus, .button-red:focus {
+.button-blue:hover, .button-red:hover, .button-blue:focus, .button-red:focus, .button-blue-dashboard:hover, .button-blue-dashboard:focus {
   color: white !important;
 }
 .w-50 {

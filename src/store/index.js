@@ -1,8 +1,9 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import ProductsStore from "@/domain/products/store";
-import LayoutsStore from "@/domain/layouts/store";
-
+import LayoutsStore from "@/domain/layouts/store/index.js";
+import BrandStore from "@/components/footer/store/brands.store.js";
+import WebPageStose from "@/domain/webpage/store/index.js";
+import PanelStore from "@/domain/panel/store/index.js"
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -11,7 +12,9 @@ export default new Vuex.Store({
   mutations: {},
   actions: {},
   modules: {
-    ...ProductsStore,
-    LayoutsStore
+    LayoutsStore,
+    BrandStore,
+    ...WebPageStose,
+    ...PanelStore,
   },
 });

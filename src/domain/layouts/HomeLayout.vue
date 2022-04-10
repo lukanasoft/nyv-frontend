@@ -31,7 +31,7 @@
 import BrandCarousel from "@/components/footer/BrandCarousel";
 import MainFooter from "@/components/footer/MainFooter";
 import NavigationBar from '@/components/navbar/NavigationBar.vue';
-import ContactView from '@/domain/contact/views/Contact.vue';
+import ContactView from '@/domain/webpage/contact/views/Contact.vue';
 export default {
   name: "HomeLayout",
   components: {
