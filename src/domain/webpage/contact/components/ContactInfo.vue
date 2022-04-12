@@ -15,14 +15,14 @@
       <icon-with-text
         class="mt-3"
         icon="SmartphoneIcon"
-        text="999 999 999"
+        text="923 093 583"
         icon-size="20"
         icon-color="#B70006"
       />
       <icon-with-text
         class="mt-3"
         icon="PhoneIcon"
-        text="01 999 999"
+        text="01 697 5531"
         icon-size="20"
         icon-color="#B70006"
       />

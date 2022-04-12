@@ -19,14 +19,16 @@
           </div>
         <b-menu>
           <b-menu-list>
-            <b-menu-item v-for="(navItem, index) in navItems" :key="index" tag="router-link" :to="navItem.to">
-              <template #label>
-                <div class="color-item">
-                  <feather-icon size="20" :icon="navItem.icon" class="mr-3" />
-                  <span>{{navItem.title}}</span>
-                </div>
-              </template>
-            </b-menu-item>
+            <template v-for="(navItem, index) in navItems">
+              <b-menu-item v-if="navItem.rolesPermissions ? navItem.rolesPermissions.includes(currentUser.role_id) : true" :key="index" tag="router-link" :to="navItem.to">
+                <template #label>
+                  <div class="color-item">
+                    <feather-icon size="20" :icon="navItem.icon" class="mr-3" />
+                    <span>{{navItem.title}}</span>
+                  </div>
+                </template>
+              </b-menu-item>
+            </template>
           </b-menu-list>
         </b-menu>
       </div>
@@ -35,17 +37,36 @@
       <section class="header-card mb-4">
         <!-- is flex align items center -->
         <div class="is-flex is-align-items-center is-justify-content-space-between">
-          <h2 style="font-size: 36px; font-weight:700">{{title}}</h2>
-          <div 
-            style="background: #0992CD; color: white; width: 50px !important; height: 50px !important; border-radius: 50%"
-            class="is-flex is-align-items-center is-justify-content-center is-clickable	"
-          >
-            <feather-icon
-              size="24"
-              icon="UserIcon"
-              class="cursor-pointer"
-            />
-          </div>
+            <h2 style="font-size: 36px; font-weight:700">{{title}}</h2>
+            <b-dropdown 
+              append-to-body  aria-role="menu"
+              scrollable
+              max-height="200"
+              trap-focus
+            >
+                <template #trigger>
+                  <div 
+                    style="background: #0992CD; color: white; width: 50px !important; height: 50px !important; border-radius: 50%"
+                    class="is-flex is-align-items-center is-justify-content-center is-clickable	"
+                  >
+                    <feather-icon
+                      size="24"
+                      icon="UserIcon"
+                      class="cursor-pointer"
+                    />
+                  </div>            
+               </template>
+
+
+            <b-dropdown-item aria-role="listitem" class="is-flex is-align-items-center" @click="logout">
+              <feather-icon
+                size="16"
+                icon="LogOutIcon"
+                class="cursor-pointer mr-1"
+              />
+              Logout
+            </b-dropdown-item>
+        </b-dropdown>
         </div>
         <p class="has-text-left" style="font-size: 20px; font-weight:600; color: #808080">
           {{date.day}} de {{monthNames[date.month]}}, {{date.year}}
@@ -61,6 +82,7 @@
 <script>
 import navigation from "./navigation/index.js";
 import FeatherIcon from '@/components/commons/FeatherIcon.vue';
+import {mapState} from 'vuex';
 export default {
   components: { FeatherIcon },
   name: "PanelLayout",
@@ -89,6 +111,11 @@ export default {
       navItems: navigation
     };
   },
+  computed: {
+    ...mapState({
+      currentUser: state => state.AuthStore.user
+    })
+  },
   beforeCreate () {
     document.querySelector('html').setAttribute('style', 'background-color: #EBF3F6')
   },
@@ -100,6 +127,13 @@ export default {
       this.title = newRoute.meta.headerTitle;
     },
   },
+  methods: {
+    async logout() {
+      await this.$store.dispatch('AuthStore/logout');
+      // go to login
+      this.$router.push({ name: 'login' });
+    }
+  }
 };
 </script>
 

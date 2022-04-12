@@ -4,18 +4,24 @@
         <div class="grid mt-3">
             <activity-card image="add-product.png" title="Ver productos" :to="{path: '/dashboard/products'}" />
             <activity-card image="edit-category.png" title="Ver categorias" :to="{path: '/dashboard/categories'}" />
-            <activity-card image="list-categories.png" title="Gestion de usuarios" :to="{path: '/dashboard/users'}" />
+            <activity-card v-if="currentUser.role_id === 1" image="list-categories.png" title="Gestion de usuarios" :to="{path: '/dashboard/users'}" />
         </div>
     </section>
 </template>
 
 <script>
+import {mapState} from 'vuex';
 import ActivityCard from './ActivityCard.vue';
 export default {
     name: 'ActivitiesCards',
     components: {
         ActivityCard
-    }
+    },
+    computed: {
+        ...mapState({
+        currentUser: state => state.AuthStore.user
+        })
+    },
 }
 </script>
 

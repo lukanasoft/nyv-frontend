@@ -1,7 +1,7 @@
 <template>
     <div class="modal-card" style="max-width: 600px">
         <header class="modal-card-head border-0" style="background-color: #0992CD;">
-            <p class="modal-card-title has-text-left has-text-white" style="font-weight: 600">Registrar usuario</p>
+            <p class="modal-card-title has-text-left has-text-white" style="font-weight: 600">Editar usuario</p>
         </header>
         <section class="modal-card-body">
             <b-field label="Nombre" class="has-text-left">
@@ -37,29 +37,40 @@
                     <option v-for="(rol, index) in roles" :value="rol.id" :key="index">{{rol.name}}</option>
                 </b-select>
             </b-field>
-            <b-field label="Contraseña" class="has-text-left">
-                <b-input
-                    custom-class="has-background-gray"
-                    type="password"
-                    v-model="user.password"
-                    placeholder="Contraseña"
-                    ref="password"
-                    required
-                />
+            <b-field class="is-flex is-align-items-start">
+                <b-checkbox v-model="checkbox" type="is-info">
+                    ¿Desea modificar la contraseña? 
+                </b-checkbox>
             </b-field>
-            <b-field label="Confirmar contraseña" class="has-text-left">
-                <b-input
-                    type="password"
-                    v-model="user.confirmPassword"
-                    custom-class="has-background-gray"
-                    placeholder="Password"
-                    ref="confirmPassword"
-                    required
-                />
-            </b-field>
+            <transition name="fade">
+                <div v-if="checkbox">
+                    <b-field label="Nueva Contraseña" class="has-text-left">
+                    <b-input
+                        custom-class="has-background-gray"
+                        type="password"
+                        v-model="user.password"
+                        placeholder="Contraseña"
+                        ref="password"
+                        required
+                        password-reveal
+                    />
+                    </b-field>
+                    <b-field label="Confirmar contraseña" class="has-text-left">
+                        <b-input
+                            type="password"
+                            v-model="user.confirmPassword"
+                            custom-class="has-background-gray"
+                            placeholder="Password"
+                            ref="confirmPassword"
+                            required
+                            password-reveal
+                        />
+                    </b-field>
+                </div>
+            </transition>
         </section>
         <footer class="modal-card-foot has-background-white is-flex is-align-items-center is-justify-content-end">
-            <b-button class="button-blue-dashboard is-primary" @click="addCategory">Registrar</b-button>
+            <b-button class="button-blue-dashboard is-primary" @click="addCategory">Editar</b-button>
         </footer>
     </div>
 </template>
@@ -67,24 +78,23 @@
 <script>
 import { mapState } from 'vuex'
 export default {
-    name: 'AddUserModal',
+    name: 'EditUserModal',
     data() {
         return {
-            user: {
-                email: '',
-                password: '',
-                name: '',
-                confirmPassword: '',
-                role_id: '',
-            },
+            user: {},
+            checkbox: false,
         }
     },
     computed: {
         ...mapState({
+            userState: state => state.UsersStore.user,
             roles: state => state.UsersStore.roles,
         }),
     },
     async created() {
+        this.user = JSON.parse(JSON.stringify(this.userState))
+        this.user.password = ''
+        this.user.confirmPassword = ''
         await this.$store.dispatch('UsersStore/getRoles')
     },
     methods: {
@@ -92,25 +102,33 @@ export default {
             this.$emit('close')
         },
         validateForm(){
-            //checkHtml5Validity
             const email = this.$refs.email.checkHtml5Validity()
-            const password = this.$refs.password.checkHtml5Validity()
-            const confirmPassword = this.$refs.confirmPassword.checkHtml5Validity()
             const name = this.$refs.name.checkHtml5Validity()
             const role = this.$refs.role.checkHtml5Validity()
-            if(email && password && confirmPassword && name && this.user.password === this.user.confirmPassword && role){
-                return true
+            if(this.checkbox) {
+                const password = this.$refs.password.checkHtml5Validity()
+                const confirmPassword = this.$refs.confirmPassword.checkHtml5Validity()
+                return  email && password && confirmPassword && name && 
+                        this.user.password === this.user.confirmPassword && role
             }
-            return false
+            return email && name && role
         },
         async addCategory() {
             if(!this.validateForm()){
                 return
             }
-            await this.$store.dispatch('UsersStore/register', this.user)
+            await this.$store.dispatch('UsersStore/editUser', this.user)
             this.closeModal()
         },
     },
+    watch: {
+        checkbox(value) {
+            if(value){
+                this.user.password = ''
+                this.user.confirmPassword = ''
+            }
+        }
+    }
 }
 </script>
 

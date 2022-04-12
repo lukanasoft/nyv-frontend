@@ -1,11 +1,11 @@
 <template>
   <section class="has-background-white p-3 mt-6" style="border-radius: 20px">
         <b-modal
-            v-model="editUserModalOpen"
+            v-model="editBrandModalOpen"
             :has-modal-card="true"
             :can-cancel="['outside', 'escape', 'x']"
         > 
-                <edit-user-modal @close="editUserModalOpen = false"/>
+                <edit-brand-modal @close="editBrandModalOpen = false"/>
         </b-modal>
       <div class="p-4">
           <div class="grid-table grid-table-header">
@@ -13,25 +13,24 @@
                   Nombre
               </span>
               <span>
-                  Email
+                  Principal
               </span>
               <span style="justify-self: center">
                   Acciones
               </span>
           </div>
-          <div v-for="(user, index) in users" :key="index" class="grid-table has-background-gray mb-2 grid-table-row" style="border-radius: 10px">
-                <span>{{user.name}}</span>
-                <span>{{user.email}}</span>
+          <div v-for="(brand, index) in brands" :key="index" class="grid-table has-background-gray mb-2 grid-table-row" style="border-radius: 10px">
+                <span>{{brand.name}}</span>
+                <span>{{brand.image ? 'Si' : 'No'}}</span>
                 <div style="justify-self: center" class="is-flex is-align-items-center">
                     <feather-icon 
                         icon="Edit2Icon" 
                         size="18" 
                         class="has-text-info is-clickable"
-                        @click="openEditUser(user)"
+                        @click="openEditBrand(brand)"
                     />
                     <feather-icon 
-                        v-if="user.id !== currentUser.id" 
-                        @click="deleteUser(user)" 
+                        @click="deleteBrand(brand)" 
                         icon="Trash2Icon" 
                         size="18" 
                         class="ml-4 has-text-danger is-clickable"
@@ -44,30 +43,29 @@
 </template>
 
 <script>
-import EditUserModal from "../components/EditUserModal.vue";
+import EditBrandModal from "../components/EditBrandModal.vue";
 import FeatherIcon from '@/components/commons/FeatherIcon.vue'
 import {mapState} from 'vuex'
 export default {
-  components: { FeatherIcon, EditUserModal }, 
+  components: { FeatherIcon, EditBrandModal }, 
     name: 'UsersTable',
     computed: {
         ...mapState({
-            users: state => state.UsersStore.users,
-            currentUser: state => state.AuthStore.user
+            brands: state => state.BrandStore.brandsAll,
         })
     },
     data() {
         return {
-            editUserModalOpen: false,
+            editBrandModalOpen: false,
         }
     },
-    created() {
-        this.$store.dispatch('UsersStore/getAllUsers')
+    async created() {
+        await this.$store.dispatch('BrandStore/getAllBrands')
     },
     methods: {
-        async deleteUser(user) {
+        async deleteBrand(brand) {
             const result = await this.$swal({
-                title: '¿Estás seguro que desea eliminar este usuario?',
+                title: '¿Estás seguro que desea eliminar esta marca?',
                 text: "¡No podrás revertir esto!",
                 icon: 'warning',
                 showCancelButton: true,
@@ -77,13 +75,13 @@ export default {
                 cancelButtonText: 'No',
             })
             if (result.isConfirmed) {
-                await this.$store.dispatch('UsersStore/deleteUser', user)
-                await this.$store.dispatch('UsersStore/getAllUsers')
+                await this.$store.dispatch('BrandStore/deleteBrand', {id: brand.id})
+                await this.$store.dispatch('BrandStore/getAllBrands')
             }
         },
-        openEditUser(user) {
-            this.$store.commit('UsersStore/SET_USER', user)
-            this.editUserModalOpen = true;
+        openEditBrand(brand) {
+            this.$store.commit('BrandStore/SET_BRAND', brand)
+            this.editBrandModalOpen = true;
         }
     }
 }

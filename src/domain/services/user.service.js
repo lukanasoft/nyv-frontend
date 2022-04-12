@@ -16,6 +16,14 @@ class UserService extends BaseService {
     deleteUser(id) {
         return this.delete(`/users/${id}`);
     }
+
+    editUser(id, user) {
+        return this.put(`/users/${id}`, user);
+    }
+
+    getRoles() {
+        return this.get('/users/roles');
+    }
 }
 
 export default new UserService();

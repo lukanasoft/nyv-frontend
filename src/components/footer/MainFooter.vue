@@ -5,10 +5,10 @@
     >
       <div class="is-grid px-6">
         <div
-          class="is-flex is-align-items-center is-justify-content-start is-flex-direction-column"
+          class="is-flex is-align-items-start is-justify-content-center is-flex-direction-column"
         >
           <div
-            class="column is-flex is-align-items-center is-justify-content-center"
+            class="is-flex is-align-items-center is-justify-content-center"
           >
             <img
               :src="require('@/assets/logo.png')"
@@ -17,34 +17,19 @@
             />
             <h3 class="logo">MULTIMARCAS</h3>
           </div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quam urna
-            odio ut id vulputate libero faucibus. Sed at ultrices non volutpat
-            sed.
+          <p class="mt-2 has-text-left">
+            Ventas de accesorios de calidad para buses interprovinciales marca Marcopolo, BussCar, Komil, Irizar, etc
           </p>
         </div>
-        <!--<div
-        class="is-flex is-align-items-center is-justify-content-start is-flex-direction-column"
-      >
-        <ul
-          class="is-flex is-align-items-start is-justify-content-center is-flex-direction-column"
-        >
-          <h4 class="subtitle">Secciones</h4>
-          <li>Inicio</li>
-          <li>Nosotros</li>
-          <li>Productos</li>
-          <li>Contactanos</li>
-        </ul>
-      </div>-->
         <div class="is-flex is-align-items-center is-justify-content-center">
           <div class="contact-footer">
             <div class="mb-2">
               <h5 class="subtitle">Horario de atención</h5>
               <p class="has-text-left ml-1 text-hour">
-                Lunes a viernes: 8:00am a 6:00pm
+                Lunes a viernes: 8:00am a 3:00pm
               </p>
               <p class="has-text-left ml-1 text-hour">
-                Sábados: 8:00am a 5:00pm
+                Sábados: 8:00am a 3:00pm
               </p>
             </div>
             <div class="contact-section">
@@ -52,19 +37,19 @@
               <icon-with-text
                 class="has-text-white ml-1"
                 icon="SmartphoneIcon"
-                text="999 999 999"
+                text="994 554 934"
                 icon-size="16"
               />
               <icon-with-text
                 class="has-text-white my-1 ml-1"
                 icon="PhoneIcon"
-                text="01 999 9999"
+                text="01 697 5531"
                 icon-size="16"
               />
               <icon-with-text
                 class="has-text-white ml-1"
                 icon="MailIcon"
-                text="ventas@gmail.com"
+                text="ventanyv@gmail.com"
                 icon-size="16"
               />
             </div>

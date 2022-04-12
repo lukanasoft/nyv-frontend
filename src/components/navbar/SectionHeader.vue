@@ -11,7 +11,7 @@
     }"
     class="image-section-principal is-flex is-align-items-center is-justify-content-center"
   >
-    <p class="has-text-white font-size-64" style="z-index: 99">{{ title }}</p>
+    <p class="has-text-white font-size-64" style="z-index: 9">{{ title }}</p>
   </div>
 </template>
 

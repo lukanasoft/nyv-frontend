@@ -4,7 +4,9 @@
       <section style="max-width: 900px" class="is-flex is-align-items-center is-justify-content-center mb-6 section-nosotros">
           <div class="is-flex is-flex-direction-column is-align-items-start mr-6 mini-sobre">
             <h3 class="is-font-36 mb-2">Sobre Nosotros</h3>
-            <p class="has-text-left is-font-18 mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quam urna odio ut id vulputate libero faucibus. Sed at ultrices non volutpat sed. Vulputate laoreet risus egestas tellus sit sed bibendum. Magnis nibh nunc, gravida nunc, pellentesque commodo elementum ac feugiat.</p>
+            <p class="has-text-left is-font-18 mb-2">
+              N&V Multimarcas es una empresa importadora de acccesorios para buses interprovinciales. Fue creada en el 2012 y nuestra esencia como espresa está relacionada a la pasión por nuestro trabajo y la generosidad y compromiso con nuestros clientes.
+            </p>
             <b-button class="button-red w-50" tag="router-link" :to="{name: 'us'}">Conoce más</b-button>
           </div>
           <div>
@@ -33,14 +35,36 @@
           </div>
       </section>
     </div>
-    <div style="background: linear-gradient(177.9deg, #B90107 3.16%, #4B0002 98.24%); color: white" class="is-flex is-align-items-center is-justify-content-center is-flex-direction-column">
+    <div style="background: linear-gradient(177.9deg, #B90107 3.16%, #4B0002 98.24%); color: white" class="is-flex is-align-items-center is-justify-content-center is-flex-direction-column p-6">
       <section style="max-width: 900px" class="is-flex is-align-items-center is-justify-content-center is-flex-direction-column p-6">
           <div class="is-flex is-flex-direction-column is-align-items-center">
             <h3 class="is-font-36 mb-2">Nuestros Productos</h3>
-            <p class="has-text-centered is-font-18 mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quam urna odio ut id vulputate libero faucibus. Sed at ultrices non volutpat sed. Vulputate laoreet risus egestas tellus sit sed bibendum. Magnis nibh nunc, gravida nunc, pellentesque commodo elementum ac feugiat.</p>
+            <p class="has-text-centered is-font-18 mb-5">
+              Somos una empresa homologada, lo cual nos permite ofrecer productos y servicios de calidad, obteniendo la plena satisfacción de nuestros clientes.
+            </p>
             <b-button style="background: transparent; color: white" outlined class="w-50" tag="router-link" :to="{name: 'products'}">Conoce más</b-button>
           </div>
       </section>
+    </div>
+    <div style="height: 400px; position: relative" class="is-flex is-align-items-center is-justify-content-center ge">
+      <div style="position: absolute; top: -40px; display: flex; align-items: center; justify-content: space-between; width: 700px; height: 350px" class="ga">
+        <div style="width: 65%; margin-right: 17px; height: 100%" class="faro-raro">
+          <div style="width: 100%; height: 50% !important; background: #F3F3F3; margin-bottom: 17px" class="is-flex is-align-items-center is-justify-content-center">
+              <img style="max-width: 100%" :src="require('@/assets/images/home/faro-raro.png')" alt="">
+          </div>
+          <div style="width: 100%; height: calc(50% - 17px) !important;"  class="ocultar is-flex is-align-items-center is-justify-content-center">
+            <div style="width: 50%; height: 100% !important; background: #F3F3F3; margin-right: 17px" class="is-flex is-align-items-center is-justify-content-center">
+              <img style="max-height: 100%" :src="require('@/assets/images/home/motor-raro.png')" alt="">
+            </div>
+            <div style="width: 50%; height: 100% !important; background: #F3F3F3" class="is-flex is-align-items-center is-justify-content-center">
+              <img style="max-width: 100%" :src="require('@/assets/images/home/bujia-rara.png')" alt="">
+            </div>
+          </div>
+        </div>
+        <div style="width: 35%; background: #F3F3F3; height: 100%" class="ocultar is-flex is-align-items-center is-justify-content-center">
+          <img style="max-width: 100%" :src="require('@/assets/images/home/raya-rara.png')" alt="">
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -81,6 +105,23 @@ export default {
   gap: 20px;
   width: 100%;
 }
+@media(max-width: 770px) {
+  .faro-raro {
+    width: 80% !important;
+    margin: 0 !important;
+  }
+  .ocultar {
+    display: none !important;
+  }
+  .ga {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+  .ge {
+    height: 200px !important;
+  }
+}
+
 @media(max-width: 900px) {
   .section-nosotros {
     flex-direction: column;

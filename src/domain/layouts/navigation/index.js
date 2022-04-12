@@ -26,5 +26,13 @@ export default [
         to: {
             path: '/dashboard/users',
         },
+        rolesPermissions: [1],
+    },
+    {
+        title: 'Marcas',
+        icon: 'BookmarkIcon',
+        to: {
+            path: '/dashboard/brands',
+        },
     }
 ]

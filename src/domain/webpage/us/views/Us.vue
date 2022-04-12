@@ -7,10 +7,7 @@
     >
       <img :src="require('@/assets/logo-texto.png')" alt="Logo NyV" />
       <p class="font-18 mt-5">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quam urna odio
-        ut id vulputate libero faucibus. Sed at ultrices non volutpat sed.
-        Vulputate laoreet risus egestas tellus sit sed bibendum. Magnis nibh
-        nunc, gravida nunc, pellentesque commodo elementum ac feugiat.
+        N&V Multimarcas es una empresa importadora de acccesorios para buses interprovinciales. Fue creada en el 2012 y nuestra esencia como empresa está relacionada a la pasión por nuestro trabajo y la generosidad y compromiso con nuestros clientes. 
       </p>
       <div style="width: 100%" class="mt-4 box-icons">
         <box-icon

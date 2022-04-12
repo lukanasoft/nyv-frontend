@@ -9,8 +9,8 @@ class AuthService extends BaseService {
         return this.post('/login', { email, password, device });
     }
 
-    register({ email, password, name }) {
-        return this.post('/register', { email, password, name });
+    register({ email, password, name, role_id }) {
+        return this.post('/register', { email, password, name, role_id });
     }
 }
 

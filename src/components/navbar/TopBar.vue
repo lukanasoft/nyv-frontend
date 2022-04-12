@@ -7,13 +7,13 @@
         <icon-with-text
           class="mx-5 has-text-white margin-0 margin-b-5"
           icon="MailIcon"
-          text="ventas@gmail.com"
+          text="ventanyv@gmail.com"
           icon-size="15"
         />
         <icon-with-text
           class="has-text-white"
           icon="PhoneIcon"
-          text="999 999 999"
+          text="923 093 583"
           icon-size="15"
         />
       </div>

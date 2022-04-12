@@ -18,15 +18,17 @@
           Contactanos
         </b-navbar-item>
         <b-navbar-item class="is-flex is-align-items-center is-justify-content-center">
-          <b-autocomplete
-          style="max-width: 300px"
-            rounded
-            placeholder="Search"
-            icon-right="magnify"
-            clearable
-          >
-            <template #empty>No results found</template>
-          </b-autocomplete>
+          <b-field>
+            <b-input 
+              type="text" 
+              placeholder="Buscar..." 
+              v-model="search" 
+              icon-right="magnify" 
+              icon-right-clickable 
+              @icon-right-click="searchProducts"
+              @keyup.enter.native="searchProducts" 
+            />
+          </b-field>
         </b-navbar-item>
       </template>
       <template #burger="{isOpened, toggleActive}"> 
@@ -54,6 +56,7 @@ export default {
     return {
       windowWidth: null,
       transparentNoEffect: true,
+      search: ""
     }
   },
   async created() {
@@ -75,6 +78,11 @@ export default {
     isValidTransparent() {
       return this.transparent && !this.transparentNoEffect;
     },
+  },
+  methods: {
+    searchProducts() {
+      this.$router.push({ name: 'products', query: { search: this.search } })
+    }
   }
 };
 </script>

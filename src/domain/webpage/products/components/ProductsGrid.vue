@@ -71,6 +71,9 @@ export default {
                 this.$store.commit('Products/SET_DETAIL_OPEN', value);
             },
         },
+        searchQuery() {
+            return this.$route.query.search;
+        }
     },
     watch: {
         page: {
@@ -79,9 +82,17 @@ export default {
             },
             deep: true,
         },
+        async searchQuery() {
+           await this.$store.dispatch('Products/getProducts', {search: this.$route.query.search});
+        },
     },
     async created() {
-        await this.$store.dispatch('Products/getProducts', {category: this.category});
+        // if have param query in url
+        if (this.$route.query.search) {
+            await this.$store.dispatch('Products/getProducts', {search: this.$route.query.search});
+        } else {
+            await this.$store.dispatch('Products/getProducts', {category: this.category});
+        }
     },
 
 }

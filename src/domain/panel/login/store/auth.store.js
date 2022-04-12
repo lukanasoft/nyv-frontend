@@ -16,10 +16,6 @@ const mutations = {
         localStorage.setItem("user", JSON.stringify(state.user));
         localStorage.setItem("token", state.token);
     },
-    logout(state) {
-        state.user = {};
-        state.token = null;
-    },
     setError(state, error) {
         state.error = error;
     },
@@ -51,7 +47,14 @@ const actions = {
         } finally {
             commit("setLoading", false);
         }
-    }
+    },
+    logout(state) {
+        
+        state.user = {};
+        state.token = null;
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+    },
 };
 
 const getters = {

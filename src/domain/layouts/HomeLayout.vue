@@ -9,13 +9,13 @@
       <div class="hero-body z-index-99">
         <div class="container is-flex is-align-items-start is-justify-content-center mb-6">
           <p class="title has-text-white is-font-72" style="max-width: 790px">
-            Lorem ipsum dolor sit amet, consectetur.
+            Accesorios de calidad para tu bus
           </p>
         </div>
       </div>
       <div class="hero-foot z-index-99 mt-6">
         <div class="position-relative is-flex align-items-center is-justify-content-center mt-6">
-          <img style="max-height: 350px" class="position-absolute" :src="require('@/assets/images/home/bus.png')" alt="bus">
+          <img style="max-height: 350px" class="position-absolute" :src="require('@/assets/images/home/bus1.png')" alt="bus">
         </div>
       </div>
     </header>
@@ -25,6 +25,9 @@
     <brand-carousel />
     <contact-view :needLayout="false" />
     <main-footer />
+    <a href="https://api.whatsapp.com/send?phone=+51994554934&text=Hola 😁, me gustaría conversar con un asesor" target="_blank" class="is-clickable" style="position: fixed; right: 40px; bottom: 40px; width: 60px; height: 60px" rounded>
+      <img :src="require('@/assets/images/icons/whatsapp.png')" />
+    </a>
   </div>
 </template>
 <script>

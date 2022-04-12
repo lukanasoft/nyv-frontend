@@ -5,6 +5,7 @@ export default {
   component: Users,
   meta: {
     requiresAuth: true,
-    headerTitle: "Usuarios"
+    headerTitle: "Usuarios",
+    rolesPermissions: [1],
   }
 };

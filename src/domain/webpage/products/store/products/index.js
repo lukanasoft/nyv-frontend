@@ -7,6 +7,7 @@ const state = {
   total: 50,
   perPage: 9,
   page: 1,
+  shoppingCart: [],
 };
 const mutations = {
   SET_PRODUCTS(state, products) {
@@ -27,21 +28,56 @@ const mutations = {
   SET_DETAIL_OPEN(state, detailOpen) {
     Vue.set(state, "detailOpen", detailOpen);
   },
+  UPDATE_PRODUCT(state, product) {
+    const index = state.products.findIndex(p => p.id === product.id);
+    Vue.set(state.products, index, product);
+  },
+  ADD_TO_CART(state, product) {
+    //preven duplicates
+    if (state.shoppingCart.findIndex(p => p.id === product.id) === -1) {
+      product.quantity = 1;
+      Vue.set(state.shoppingCart, state.shoppingCart.length, product);
+    }
+  },
+  REMOVE_FROM_CART(state, product) {
+    const index = state.shoppingCart.findIndex(p => p.id === product.id);
+    Vue.delete(state.shoppingCart, index);
+  },
 };
 const actions = {
-  async getProducts({ commit, state }, { category }) {
-    console.log(category, state);
+  async getProducts({ commit, state }, { category, search }) {
     const response = await ProductService.getAllProducts(
       {
         page: state.page,
         perPage: state.perPage,
         categoryId: category,
+        search: search
       }
     );
     const products = response.data.data
     commit("SET_TOTAL", response.data.total);
     commit("SET_PRODUCTS", products);
   },
+  async addProduct({ commit }, product) {
+    await ProductService.uploadProduct(product);
+  },
+  async deleteProduct({ commit }, product) {
+    console.log('gaa', product)
+    await ProductService.deleteProduct(product.id);
+  },
+
+  async deletePhoto({ commit }, {photo, product}) {
+    await ProductService.deletePhoto(product.id, photo.id);
+  },
+
+  async editProduct({ commit }, {product, formData}) {
+    const response = await ProductService.updateProduct(product.id, formData);
+    commit("UPDATE_PRODUCT", response.data);
+  },
+};
+const getters = {
+  cartSize: state => state.shoppingCart.length,
+  shoppingCart: state => state.shoppingCart,
 };
 
 export default {
@@ -49,4 +85,5 @@ export default {
   state,
   mutations,
   actions,
+  getters
 };

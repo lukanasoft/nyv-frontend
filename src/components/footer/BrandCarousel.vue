@@ -3,11 +3,12 @@
     <div class="container">
       <b-carousel-list
         ref="carousel"
+        class="p-3"
         v-bind="carouselBrandConfiguration"
         :data="brands"
       >
         <template #item="{name, image}">
-          <section>
+          <section style="height: 100%" class="is-flex is-align-items-center is-justify-content-center">
             <img
               :src="image"
               style="max-height: 200px !important"
