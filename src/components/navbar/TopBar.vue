@@ -7,13 +7,21 @@
         <icon-with-text
           class="mx-5 has-text-white margin-0 margin-b-5"
           icon="MailIcon"
-          text="ventanyv@gmail.com"
+          text="ventasnyv@gmail.com"
           icon-size="15"
+          :is-link="true"
+          icon-color="white"
+          link-to="mailto:ventasnyv@gmail.com"
+          link-color="white"
         />
         <icon-with-text
-          class="has-text-white"
+          class="mr-5 has-text-white margin-0 margin-b-5"
           icon="PhoneIcon"
-          text="923 093 583"
+          text="994 554 934 - 923 093 583"
+          :is-link="true"
+          link-to="tel:+51994554934"
+          icon-color="white"
+          link-color="white"
           icon-size="15"
         />
       </div>

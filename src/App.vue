@@ -6,10 +6,11 @@
   </div>
 </template>
 <script>
-import PrincipalLayout from "@/domain/layouts/PrincipalLayout";
-import HomeLayout from "@/domain/layouts/HomeLayout";
-import LoginLayout from "@/domain/layouts/LoginLayout";
-import PanelLayout from "@/domain/layouts/PanelLayout";
+import PrincipalLayout from "@/domain/layouts/PrincipalLayout.vue";
+import HomeLayout from "@/domain/layouts/HomeLayout.vue";
+import LoginLayout from "@/domain/layouts/LoginLayout.vue";
+import PanelLayout from "@/domain/layouts/PanelLayout.vue";
+import SimpleLayout from "@/domain/layouts/SimpleLayout.vue";
 
 import {mapState} from 'vuex';
 export default {
@@ -17,7 +18,8 @@ export default {
     PrincipalLayout,
     HomeLayout,
     LoginLayout,
-    PanelLayout
+    PanelLayout,
+    SimpleLayout
   },  
   computed: {
     ...mapState({

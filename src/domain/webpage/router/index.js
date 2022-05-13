@@ -6,7 +6,7 @@ import HomeRoute from "../home/router"
 
 export default [
     ContactRoute,
-    ProductsRoute,
+    ...ProductsRoute,
     UsRoute,
     HomeRoute
 ]

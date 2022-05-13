@@ -26,10 +26,10 @@
             <div class="mb-2">
               <h5 class="subtitle">Horario de atención</h5>
               <p class="has-text-left ml-1 text-hour">
-                Lunes a viernes: 8:00am a 3:00pm
+                Lunes a viernes: 8:30am a 6:00pm
               </p>
               <p class="has-text-left ml-1 text-hour">
-                Sábados: 8:00am a 3:00pm
+                Sábados: 8:30am a 3:00pm
               </p>
             </div>
             <div class="contact-section">
@@ -37,20 +37,42 @@
               <icon-with-text
                 class="has-text-white ml-1"
                 icon="SmartphoneIcon"
-                text="994 554 934"
+                text="994 554 934 - 923 093 583"
                 icon-size="16"
+                :is-link="true"
+                link-to="tel:994554934"
+                icon-color="white"
+                link-color="white"
               />
               <icon-with-text
                 class="has-text-white my-1 ml-1"
                 icon="PhoneIcon"
                 text="01 697 5531"
                 icon-size="16"
+                :is-link="true"
+                link-to="tel:016975531"
+                icon-color="white"
+                link-color="white"
               />
               <icon-with-text
                 class="has-text-white ml-1"
                 icon="MailIcon"
-                text="ventanyv@gmail.com"
+                text="ventasnyv@gmail.com"
                 icon-size="16"
+                :is-link="true"
+                link-to="mailto:ventasnyv@gmail.com"
+                icon-color="white"
+                link-color="white"
+              />
+              <icon-with-text
+                class="has-text-white ml-1"
+                icon="MailIcon"
+                text="ventas@nyvmultimarcas.com.pe"
+                icon-size="16"
+                :is-link="true"
+                link-to="mailto:ventas@nyvmultimarcas.com.pe"
+                icon-color="white"
+                link-color="white"
               />
             </div>
           </div>

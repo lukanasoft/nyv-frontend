@@ -14,6 +14,7 @@ const options = {
   confirmButtonColor: '#41b882',
   cancelButtonColor: '#ff7674',
 };
+
 Vue.use(VueSweetalert2, options);
 new Vue({
   router,

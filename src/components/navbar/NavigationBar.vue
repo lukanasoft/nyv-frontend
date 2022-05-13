@@ -15,7 +15,7 @@
           Productos
         </b-navbar-item>
         <b-navbar-item :style="transparent ? 'color: white' : ''" tag="router-link" :to="{ name: 'contact' }">
-          Contactanos
+          Contáctanos
         </b-navbar-item>
         <b-navbar-item class="is-flex is-align-items-center is-justify-content-center">
           <b-field>

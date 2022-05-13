@@ -8,16 +8,22 @@
       <icon-with-text
         class="mt-3"
         icon="MapPinIcon"
-        text="Av. Nicolas Arriola 1581, La Victoria"
+        text="Av. Nicolas Arriola 1581, La Victoria 15021"
         icon-size="20"
         icon-color="#B70006"
+        :is-link="true"
+        link-to="https://maps.google.com/maps?q=NYV%20MULTIMARCAS"
+        link-color="#2c3e50"
       />
       <icon-with-text
         class="mt-3"
         icon="SmartphoneIcon"
-        text="923 093 583"
+        text="994 554 934 - 923 093 583"
         icon-size="20"
         icon-color="#B70006"
+        :is-link="true"
+        link-to="tel:994554934"
+        link-color="#2c3e50"
       />
       <icon-with-text
         class="mt-3"
@@ -25,13 +31,29 @@
         text="01 697 5531"
         icon-size="20"
         icon-color="#B70006"
+        :is-link="true"
+        link-to="tel:016975531"
+        link-color="#2c3e50"
       />
       <icon-with-text
         class="mt-3"
         icon="MailIcon"
-        text="ventas@gmail.com"
+        text="ventasnyv@gmail.com"
         icon-size="20"
         icon-color="#B70006"
+        :is-link="true"
+        link-to="mailto:ventasnyv@gmail.com"
+        link-color="#2c3e50"
+      />
+      <icon-with-text
+        class="mt-3"
+        icon="MailIcon"
+        text="ventas@nyvmultimarcas.com.pe"
+        icon-size="20"
+        icon-color="#B70006"
+        :is-link="true"
+        link-to="mailto:ventas@nyvmultimarcas.com.pe"
+        link-color="#2c3e50"
       />
     </div>
   </div>

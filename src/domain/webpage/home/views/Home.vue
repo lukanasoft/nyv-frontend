@@ -5,7 +5,7 @@
           <div class="is-flex is-flex-direction-column is-align-items-start mr-6 mini-sobre">
             <h3 class="is-font-36 mb-2">Sobre Nosotros</h3>
             <p class="has-text-left is-font-18 mb-2">
-              N&V Multimarcas es una empresa importadora de acccesorios para buses interprovinciales. Fue creada en el 2012 y nuestra esencia como espresa está relacionada a la pasión por nuestro trabajo y la generosidad y compromiso con nuestros clientes.
+              N&V Multimarcas es una empresa importadora de acccesorios para buses interprovinciales. Fue creada en el 2012 y nuestra esencia como empresa está relacionada a la pasión por nuestro trabajo, la generosidad y compromiso con nuestros clientes.
             </p>
             <b-button class="button-red w-50" tag="router-link" :to="{name: 'us'}">Conoce más</b-button>
           </div>
@@ -19,7 +19,7 @@
               <box-icon
                 class="box-icon"
                 :svg-data="require('@/assets/svg/icons/bus.svg')"
-                text="ENVIO NACIONAL"
+                text="ENVÍO NACIONAL"
               />
               <box-icon
                 class="box-icon"
@@ -42,7 +42,7 @@
             <p class="has-text-centered is-font-18 mb-5">
               Somos una empresa homologada, lo cual nos permite ofrecer productos y servicios de calidad, obteniendo la plena satisfacción de nuestros clientes.
             </p>
-            <b-button style="background: transparent; color: white" outlined class="w-50" tag="router-link" :to="{name: 'products'}">Conoce más</b-button>
+            <b-button style="background: transparent; color: white" outlined class="w-50" tag="router-link" :to="{name: 'products'}">Ver más</b-button>
           </div>
       </section>
     </div>

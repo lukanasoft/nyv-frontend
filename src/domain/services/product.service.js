@@ -40,6 +40,10 @@ class ProductService extends BaseService {
             }
         });
     }
+
+    getProduct(productId) {
+        return this.get('/products/' + productId);
+    }
 }
 
 export default new ProductService();

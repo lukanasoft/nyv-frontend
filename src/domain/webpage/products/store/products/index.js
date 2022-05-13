@@ -7,7 +7,8 @@ const state = {
   total: 50,
   perPage: 9,
   page: 1,
-  shoppingCart: [],
+  //get shopping cart local storage
+  shoppingCart: JSON.parse(localStorage.getItem('shoppingCart')) || [],
 };
 const mutations = {
   SET_PRODUCTS(state, products) {
@@ -37,11 +38,14 @@ const mutations = {
     if (state.shoppingCart.findIndex(p => p.id === product.id) === -1) {
       product.quantity = 1;
       Vue.set(state.shoppingCart, state.shoppingCart.length, product);
+      // set shopping cart in local storage
+      localStorage.setItem('shoppingCart', JSON.stringify(state.shoppingCart));
     }
   },
   REMOVE_FROM_CART(state, product) {
     const index = state.shoppingCart.findIndex(p => p.id === product.id);
     Vue.delete(state.shoppingCart, index);
+    localStorage.setItem('shoppingCart', JSON.stringify(state.shoppingCart));
   },
 };
 const actions = {
@@ -73,6 +77,11 @@ const actions = {
   async editProduct({ commit }, {product, formData}) {
     const response = await ProductService.updateProduct(product.id, formData);
     commit("UPDATE_PRODUCT", response.data);
+  },
+
+  async getProduct({ commit }, { id }) {
+    const response = await ProductService.getProduct(id);
+    commit("SET_PRODUCT", response.data);
   },
 };
 const getters = {

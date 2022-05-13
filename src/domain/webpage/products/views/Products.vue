@@ -23,7 +23,7 @@ export default {
 <style scoped>
 .is-grid {
   display: grid;
-  grid-template-columns: 2fr 5fr;
+  grid-template-columns: 1fr 3fr;
   column-gap: 30px;
 }
 @media(max-width: 1024px) {

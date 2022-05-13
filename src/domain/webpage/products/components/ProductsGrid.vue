@@ -28,25 +28,16 @@
             order="is-centered"
           />
       </div>
-      <b-modal
-        v-model="detailOpen"
-        :has-modal-card="true"
-        :can-cancel="['escape', 'outside']"
-      > 
-          <modal-detail />
-      </b-modal>
   </article>
 </template>
 
 <script>
 import { mapState } from 'vuex';
 import ProductCard from '@/domain/webpage/products/components/ProductCard.vue';
-import ModalDetail from '@/domain/webpage/products/components/ModalDetail.vue';
 export default {
     name: "ProductsGrid",
     components: {
         ProductCard,
-        ModalDetail,
     },
     computed: {
         ...mapState({
@@ -61,14 +52,6 @@ export default {
             },
             set(value) {
                 this.$store.commit('Products/SET_PAGE', value);
-            },
-        },
-        detailOpen: {
-            get() {
-                return this.$store.state.Products.detailOpen;
-            },
-            set(value) {
-                this.$store.commit('Products/SET_DETAIL_OPEN', value);
             },
         },
         searchQuery() {
@@ -118,8 +101,7 @@ export default {
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     justify-items: center;
-    column-gap: 53px;
-    row-gap: 41px;
+    gap: 20px;
 }
 @media(max-width: 1024px) {
     .is-grid-cards {

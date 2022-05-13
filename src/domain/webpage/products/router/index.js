@@ -1,10 +1,18 @@
 import Products from "../views/Products.vue";
-export default {
-  name: "products",
-  path: "/productos",
-  meta: {
-    headerTitle: "Nuestros productos",
-    headerImage: require("@/assets/images/header/productos.png"),
+import ProductDetail from "../views/ProductDetail.vue";
+export default [
+  {
+    name: "products",
+    path: "/productos",
+    meta: {
+      headerTitle: "Nuestros productos",
+      headerImage: require("@/assets/images/header/productos.png"),
+    },
+    component: Products,
   },
-  component: Products,
-};
+  {
+    name: "product-detail",
+    path: "/productos/:id",
+    component: ProductDetail,
+  },
+];

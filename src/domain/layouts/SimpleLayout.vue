@@ -1,13 +1,12 @@
 <template>
-  <div id="app" style="position: relative">
-    <nav-bar />
-
+  <div id="app">
+    <header>
+      <top-bar />
+      <navigation-bar />
+    </header>
     <transition name="fade">
       <router-view />
     </transition>
-    <brand-carousel />
-    <main-footer />
-    <!-- buton shopping cart -->
     <b-button @click="open = true" style="position: fixed; left: 40px; bottom: 40px; width: 60px; height: 60px" rounded class="button-blue">
       <div class="is-flex is-align-items-center is-justify-content-center" style="position: relative">
         <feather-icon icon="ShoppingCartIcon" size="25"/>
@@ -26,6 +25,7 @@
     <a href="https://api.whatsapp.com/send?phone=+51994554934&text=Hola 😁, me gustaría conversar con un asesor" target="_blank" class="is-clickable" style="position: fixed; right: 40px; bottom: 40px; width: 60px; height: 60px" rounded>
       <img :src="require('@/assets/images/icons/whatsapp.png')" />
     </a>
+    <main-footer />
     <b-sidebar
       type="is-light"
       fullheight
@@ -69,46 +69,45 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
 import FeatherIcon from '@/components/commons/FeatherIcon.vue';
-import NavBar from "@/components/navbar/NavBar";
-import BrandCarousel from "@/components/footer/BrandCarousel";
-import MainFooter from "@/components/footer/MainFooter";
+import { mapGetters } from 'vuex'
+import NavBar from "@/components/navbar/NavBar.vue";
+import MainFooter from "@/components/footer/MainFooter.vue";
+import TopBar from "@/components/navbar/TopBar";
+import NavigationBar from "@/components/navbar/NavigationBar";
 export default {
-  name: "PrincipalLayout",
+  name: "SimpleLayout",
   components: {
     MainFooter,
-    BrandCarousel,
     NavBar,
+    TopBar,
+    NavigationBar,
     FeatherIcon
+  },
+  computed: {
+    ...mapGetters({
+      cartSize: 'Products/cartSize',
+      shoppingCart: 'Products/shoppingCart',
+    }),
+    meesageWhatsapp() {
+      let message = "https://api.whatsapp.com/send?phone=+51994554934&text=";
+      message += "Hola 😁, me gustaría cotizar estos productos: %0A";
+      this.shoppingCart.forEach(item => {
+        message += "✅ " + item.code +"-" + item.name + "%0A";
+      });
+      return message;
+    }
   },
   data() {
     return {
       open: false,
     }
   },
-  computed: {
-    ...mapGetters({
-      cartSize: 'Products/cartSize',
-      shoppingCart: 'Products/shoppingCart'
-    }),
-    meesageWhatsapp() {
-      let message = "https://api.whatsapp.com/send?phone=+51994554934&text=";
-      message += "Hola 😁, me gustaría cotizar estos productos: %0A";
-      this.shoppingCart.forEach(item => {
-        message += "✅ " + item.name + "%0A";
-      });
-      return message;
-    }
-  },
   methods: {
-    removeItem(product) {
-      this.$store.commit('Products/REMOVE_FROM_CART', product)
-    },
     cotizarCarrito() {
       this.open = false;
     }
-  },
+  }
 };
 </script>
 <style scoped>
@@ -124,19 +123,5 @@ export default {
 .grid-item-sidebar-cart-info-name {
   font-size: 1.2rem;
   font-weight: 500;
-}
-</style>
-<style>
-.b-sidebar .sidebar-content.is-fullheight.is-right {
-  /* border radius top right */
-  border-top-right-radius: 0 !important;
-  /* border radius bottom right */
-  border-bottom-right-radius: 0 !important;
-  width: 30vw;
-}
-@media (max-width: 768px) {
-  .b-sidebar .sidebar-content.is-fullheight.is-right {
-    width: 80vw;
-  }
 }
 </style>
